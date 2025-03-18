@@ -181,8 +181,8 @@ def call_visa_roadmap_api(text,roadmap_type,additional_information):
         dict: API response with roadmap data
     """
     # url = "https://langraph-visaroadmap-247572588539.us-central1.run.app/generate_roadmap"
-    # url = "https://latestvisaroadmap-247572588539.us-central1.run.app/generate_roadmap"
-    url="http://localhost:8000/generate_roadmap"
+    url = "https://latestvisaroadmap-247572588539.us-central1.run.app/generate_roadmap"
+    # url="http://localhost:8000/generate_roadmap"
     # url ="https://lang-visaroadmap-v4.onrender.com/generate_roadmap"
     try:
         # Prepare the payload - make sure text is in single line
