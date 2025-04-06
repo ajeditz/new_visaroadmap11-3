@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Roadmap Assistant</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2 class="sidebar-title">How to Use</h2>
+            <ul class="sidebar-steps">
+                <li>Select your visa type</li>
+                <li>Add extra information</li>
+                <li>Upload questionnaire PDF</li>
+                <li>Click 'Generate Roadmap'</li>
+                <li>Review detailed roadmap sections</li>
+                <li>Download your report as PDF</li>
+            </ul>
+        </div>
+        <main class="main">
+            <h1 class="title">Visa Roadmap Assistant</h1>
+            
+            <div class="form-group">
+                <label for="visaType" class="form-label">Select Visa Type:</label>
+                <select id="visaType" class="form-select">
+                    <option value="">Select Visa Type</option>
+                    <option value="immigration visa">Immigration Visa</option>
+                    <option value="study visa">Study Visa</option>
+                    <option value="travel visa">Travel Visa</option>
+                    <option value="work visa">Work Visa</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="additionalInfo" class="form-label">Additional Information (Optional)</label>
+                <textarea id="additionalInfo" class="form-textarea" placeholder="Enter any additional information that might be helpful"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Upload your questionnaire PDF</label>
+                <div class="file-upload">
+                    <input type="file" class="file-upload-input" accept=".pdf">
+                    <i class="file-upload-icon">📄</i>
+                    <span class="file-upload-text">Drag & drop files or click to browse</span>
+                </div>
+                <div class="file-upload-preview">
+                    <div class="preview-header">
+                        <span class="preview-title">Uploaded File</span>
+                        <span class="preview-expand">Show More</span>
+                    </div>
+                    <div class="preview-content"></div>
+                </div>
+            </div>
+            
+            <button id="generateBtn" class="btn btn-primary">Generate Roadmap</button>
+            
+            <div class="results-section" id="resultsSection">
+                <div class="accordion">
+                    <button class="accordion-header">
+                        CRS Score Details
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner markdown-content" id="crsScoreContent">
+                            Details about CRS Score
+                        </div>
+                        <textarea class="markdown-editor hidden" data-for="crsScoreContent"></textarea>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <button class="accordion-header">
+                        Eligible Job Roles
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner markdown-content" id="jobRolesContent">
+                            Details about Eligible Job Roles
+                        </div>
+                        <textarea class="markdown-editor hidden" data-for="jobRolesContent"></textarea>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <button class="accordion-header">
+                        NOC Codes
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner markdown-content" id="nocCodesContent">
+                            Details about NOC Codes
+                        </div>
+                        <textarea class="markdown-editor hidden" data-for="nocCodesContent"></textarea>
+                    </div>
+                </div>
+                
+                <div class="accordion">
+                    <button class="accordion-header">
+                        Roadmap for Canada Immigration
+                        <span class="accordion-icon"></span>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="accordion-inner markdown-content" id="roadmapContent">
+                            Details about Roadmap
+                        </div>
+                        <textarea class="markdown-editor hidden" data-for="roadmapContent"></textarea>
+                    </div>
+                </div>
+                
+                <div class="download-section">
+                    <button id="downloadBtn" class="btn btn-outline">Download Report as PDF</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="spinner-overlay" id="spinnerOverlay">
+        <div class="spinner"></div>
+        <div class="spinner-text">Generating Roadmap...</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

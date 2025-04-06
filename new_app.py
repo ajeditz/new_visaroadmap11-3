@@ -4,91 +4,7 @@ import io
 from markdown_pdf import MarkdownPdf, Section
 import fitz
 import pdfplumber
-import re
-
-# def extract_text_from_pdf(pdf_file):
-#     """
-#     Extract text from PDF using RapidAPI and convert it to a single line
-    
-#     Args:
-#         pdf_file: The uploaded PDF file
-#     Returns:
-#         str: Extracted text in a single line with proper spacing
-#     """
-#     # RapidAPI endpoint for PDF extraction
-#     url = "https://ocr-text-extraction.p.rapidapi.com/v1/ocr/"
-    
-#     # RapidAPI headers - you need to get these from RapidAPI dashboard
-#     headers = {
-#         "X-RapidAPI-Key": st.secrets["RAPIDAPI_KEY"],
-#         "X-RapidAPI-Host": "ocr-text-extraction.p.rapidapi.com"
-#     }
-    
-#     try:
-#         # Convert PDF file to bytes for sending to API
-#         pdf_bytes = pdf_file.getvalue()
-        
-#         # Make API request to RapidAPI
-#         response = requests.post(
-#             url,
-#             headers=headers,
-#             files={"pdf": pdf_bytes}
-#         )
-        
-#         if response.status_code == 200:
-#             # Get the extracted text from response
-#             extracted_text = response.json().get('text', '')
-            
-#             # Convert text to single line:
-#             # 1. Split text into lines
-#             # 2. Join with spaces
-#             # 3. Remove extra whitespace
-#             single_line_text = " ".join(extracted_text.split())
-            
-#             return single_line_text
-#         else:
-#             # If RapidAPI fails, use fallback method
-#             return fallback_extract_text(pdf_file)
-            
-#     except Exception as e:
-#         st.warning("Using fallback PDF extraction method")
-#         return fallback_extract_text(pdf_file)
-    
-
-# def extract_text_from_pdf(pdf_file):
-#     """
-#     Extract text from PDF using pdfplumber for improved layout accuracy.
-    
-#     Args:
-#         pdf_file: The uploaded PDF file
-#     Returns:
-#         str: Extracted text with preserved line breaks and cleaned of extraneous links.
-#     """
-#     try:
-#         pdf_file.seek(0)
-#         text = ""
-#         with pdfplumber.open(pdf_file) as pdf:
-#             for page in pdf.pages:
-#                 # Extract text while preserving layout
-#                 page_text = page.extract_text()
-#                 if page_text:
-#                     text += page_text + "\n"
-        
-#         # Remove unwanted links (e.g., footer links) using regex
-#         # This pattern removes URLs starting with http or https
-#         text = re.sub(r'https?://\S+', '', text)
-        
-#         # Optionally, remove any extra form navigation or page numbering if needed:
-#         text = re.sub(r'\d+/\d+\s*$', '', text, flags=re.MULTILINE)
-        
-#         # Normalize whitespace and line breaks
-#         cleaned_text = "\n".join([line.strip() for line in text.splitlines() if line.strip()])
-        
-#         return cleaned_text
-#     except Exception as e:
-#         st.error(f"Error extracting text with pdfplumber: {str(e)}")
-#         return fallback_extract_text(pdf_file)
-    
+import re    
 import pdfplumber
 import fitz  # PyMuPDF
 import io
@@ -181,8 +97,8 @@ def call_visa_roadmap_api(text,roadmap_type,additional_information):
         dict: API response with roadmap data
     """
     # url = "https://langraph-visaroadmap-247572588539.us-central1.run.app/generate_roadmap"
-    url = "https://latestvisaroadmap-247572588539.us-central1.run.app/generate_roadmap"
-    # url="http://localhost:8000/generate_roadmap"
+    # url = "https://latestvisaroadmap-247572588539.us-central1.run.app/generate_roadmap"
+    url="http://localhost:8000/generate_roadmap"
     # url ="https://lang-visaroadmap-v4.onrender.com/generate_roadmap"
     try:
         # Prepare the payload - make sure text is in single line
