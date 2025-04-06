@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 params.append('additional_information', additionalInfo.value);
             }
 
-            const url = `http://127.0.0.1:8000/generate_roadmap?${params.toString()}`;
+            const url = `https://latestvisaroadmap-247572588539.us-central1.run.app/generate_roadmap?${params.toString()}`;
 
             const response = await fetch(url, {
                 method: 'POST',
